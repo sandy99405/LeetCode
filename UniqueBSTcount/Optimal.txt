@@ -1,0 +1,21 @@
+class Solution{
+
+      public int generateTreesCount(int n){
+            if(n<=1){
+             return 1;
+            }
+            int [] arr = new int[n+1];
+            
+            int arr[0] = 1;
+            int arr[1] = 1;
+            int arr[2] = 2;
+            
+            for(int k=3;k<=n;k++){
+                for(int i=0;i<k;i++){
+                     arr[k] += arr[i]*arr[k-i-1];
+                }
+            }
+            
+            return arr[arr.length-1];
+      }
+}
