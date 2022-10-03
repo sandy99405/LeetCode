@@ -1,0 +1,53 @@
+class TreeNode{
+     TreeNode right;
+     TreeNode left;
+     int val;
+     
+     TreeNode(int val,TreeNode left,TreeNode right){
+            this.right = right;
+            this.left = left;
+            this.val = val;
+     }
+}
+
+class Solution{
+
+        private first;
+        private second;
+        private prev;
+
+        public void recoverTrees(TreeNode root){
+        
+               first  = null;
+               second = null;
+               preev  = null;
+               
+               inorder(root);
+               
+               
+               if(first!=null&&second!=null){
+               int tmp = first.val;
+               first.val = second.val;
+               second.val = tem;
+               }
+              
+        }
+
+
+        public void inorder(TreeNode root){
+             if(root==null){
+                  return; 
+             }
+             inorder(root.left);
+             
+             if(first==null&&(prev!=null&&prev.val>=root.val)){
+                      first = prev;
+             }
+             
+             if(first!=null&&prev.val>=root.val){
+                     second = root;
+             }
+             prev = root;
+             inorder(root.right);
+        }
+}
