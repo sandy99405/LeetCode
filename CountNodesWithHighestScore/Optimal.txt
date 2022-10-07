@@ -1,0 +1,71 @@
+class Solution{
+ 
+ 
+      class TreeNode{
+         TreeNode right;
+         Treenode left;
+         int Score = 0;
+         int nodeCount = 0;
+      }
+     
+      public int highestScore(int [] parents){
+            int size = parents.length;
+            
+            TreeNode nodes[] = new TreeNode[size];
+            
+            for(int x=0;x<size;x++){
+                nodes[x] = new TreeNode();
+            }
+            
+            for(int i =1;i<n;i++){
+                  int parentId = parents[i];
+                  
+                  if(nodes[parentId].left==null){
+                      nodes[parentId].left = nodes[i];
+                  }else{
+                      nodes[parentId].right = nodes[i];
+                  }
+            }
+            
+            countNodes(nodes[0]);
+            
+            long maxScore = 0l;
+            
+            for(int j=0;j<n;j++){
+                  long prod = 1l;
+                              
+                  int leftCount   =  nodes[i].left==null?0:nodes[i].left.nodeCount;  
+                  int rightCount  =  nodes[i].right==null?0:nodes[i].right.nodeCount;
+                  int parentCount = n-leftCount-rightCount-1;
+                  
+                  if(leftCount>0){
+                      prod *= leftCount; 
+                  }
+                  if(rightCount>0){
+                      prod *= rightCount;
+                  }
+                  if(parentCount>0){
+                      prod *= parentCount;
+                  }
+                  
+                  nodes[j].Score = prod;
+                  maxScore = Math.max(maxScore,pod);
+            }
+            for(int k=0;k<n;k++){
+                if(nodes[k].Score==maxScore){
+                   noOfNodes++;
+                }
+            }
+           
+           return noOfNodes; 
+      }
+      
+      public int countNodes(TreeNode root){
+          if(root==null){
+              return 0;
+          }
+          root.nodeCount  = 1 + countNodes() + countNodes();
+          return root.nodeCount;  
+      }
+      
+}
